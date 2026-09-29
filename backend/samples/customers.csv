@@ -1,0 +1,9 @@
+customer_id,full_name,email,city,signup_date
+1,Maria Chen,m.chen@example.com,Austin,2025-02-11
+2,Ahmed Raza,a.raza@example.com,Lahore,2025-03-04
+3,Sofia Ivanova,s.ivanova@example.com,Sofia,2025-01-27
+4,Liam Brown,l.brown@example.com,Leeds,2025-04-02
+5,Aisha Khan,a.khan@example.com,Karachi,2025-04-19
+6,Noah Miller,n.miller@example.com,Austin,2025-05-08
+7,Emma Davis,e.davis@example.com,Leeds,2025-05-21
+8,Omar Farooq,o.farooq@example.com,Lahore,2025-06-03
