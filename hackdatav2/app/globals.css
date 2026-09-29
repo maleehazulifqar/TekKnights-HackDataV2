@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background:
+      radial-gradient(900px 500px at 100% -10%, rgba(44,199,176,0.10), transparent 60%),
+      radial-gradient(700px 400px at 0% 110%, rgba(124,108,240,0.07), transparent 60%),
+      #fbfbf9;
+  }
+  ::selection { background: rgba(44,199,176,0.3); }
+  * { scrollbar-width: thin; scrollbar-color: #c9c5b9 transparent; }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-thumb { background: #cfcbbf; border-radius: 999px; }
+  *::-webkit-scrollbar-thumb:hover { background: #167a6c; }
+}
+
+@layer components {
+  /* Every clickable button: press-down feel + ripple host */
+  .btn { @apply relative overflow-hidden select-none transition-all duration-200 ease-out active:scale-[0.95] disabled:active:scale-100; }
+
+  /* Primary gradient button with shine sweep */
+  .btn-primary {
+    @apply btn text-white font-semibold shadow-lg shadow-teal/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-teal/40 disabled:opacity-70 disabled:hover:translate-y-0;
+    background-image: linear-gradient(135deg, #167a6c 0%, #1fa896 50%, #2cc7b0 100%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+  }
+  .btn-primary:hover { background-position: 100% 50%; }
+  .btn-primary::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+    transform: translateX(-120%); transition: transform 0.7s ease;
+  }
+  .btn-primary:hover::after { transform: translateX(120%); }
+  .btn-success { background-image: linear-gradient(135deg, #15803d, #22c55e); }
+
+  /* Secondary outlined button */
+  .btn-ghost { @apply btn border border-line bg-white text-ink hover:-translate-y-0.5 hover:border-teal/60 hover:bg-tealsoft hover:shadow-md; }
+
+  /* Small icon button */
+  .btn-icon { @apply btn grid place-items-center rounded-lg text-slate hover:bg-tealsoft hover:text-teal; }
+
+  /* Lift-on-hover cards */
+  .card-lift { @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/10 hover:border-teal/40; }
+
+  /* Glass surface */
+  .glass { background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); }
+
+  /* Ripple element created on click (see WorkspaceLayout) */
+  .ripple-dot { position: absolute; border-radius: 9999px; background: rgba(255,255,255,0.55); pointer-events: none; animation: ripple 0.65s ease-out forwards; }
+  .btn-ghost .ripple-dot, .btn-icon .ripple-dot, .ripple-dark { background: rgba(22,122,108,0.28); }
+
+  .gradient-text { background-image: linear-gradient(90deg, #167a6c, #7c6cf0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+}
+
+@keyframes ripple { 0% { transform: scale(0); opacity: 0.5; } 100% { transform: scale(4); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
